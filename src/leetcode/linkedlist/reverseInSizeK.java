@@ -2,7 +2,7 @@ package leetcode.linkedlist;
 
 public class reverseInSizeK {
     public static void main(String[] args) {
-         int k = 2;
+        int k = 2;
         LinkedListNode head = new LinkedListNode(1);
         LinkedListNode temp = head;
         temp.next = new LinkedListNode(2);
@@ -17,12 +17,12 @@ public class reverseInSizeK {
         temp= temp.next;
         temp.next = new LinkedListNode(7);
         temp = head;
-        System.out.println("original linkedlist before reversal");
+        System.out.println("original LinkedList before reversal");
         while(temp!=null){
             System.out.print(temp.val+" ");
             temp = temp.next;
         }
-        LinkedListNode newHead = reverse(head,k);
+        LinkedListNode newHead = reverseInK(head,k);
         temp = newHead;
         System.out.println("\nAfter reversal in size of k");
         while(temp!=null){
@@ -32,7 +32,7 @@ public class reverseInSizeK {
 
     }
 
-    public static LinkedListNode reverse(LinkedListNode head,int k){
+    public static LinkedListNode reverseInK(LinkedListNode head,int k){
         /// 1 2 3 4 5 6 7
         int count = k;
         LinkedListNode nextGroupHead = head;
@@ -55,7 +55,7 @@ public class reverseInSizeK {
                 curr = next;
             }
             if(nextGroupHead!=null){
-                head.next = reverse(nextGroupHead,k);
+                head.next = reverseInK(nextGroupHead,k);
             }
             return prev;
 
@@ -71,13 +71,9 @@ public class reverseInSizeK {
 class LinkedListNode{
     public int val;
     public LinkedListNode next;
-
     public LinkedListNode(int value){
         this.val = value;
         this.next = null;
     }
-
-
-
 
 }
